@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.mayur</groupId>
+  <artifactId>jpa-specification-example</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>JPASpecificationExampleApplication</module>
+  </modules>
+
+  <name>jpa-specification-example</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <spring.boot.maven.plugin.version>2.5.7</spring.boot.maven.plugin.version>
+    <spring.boot.dependencies.version>2.5.7</spring.boot.dependencies.version>
+    <guava.version>32.1.3-jre</guava.version>
+    <postgresql.version>42.6.0</postgresql.version>
+  </properties>
+
+<!--
+Scope: The "scope" attribute determines when the dependency is available and how it is used during different phases of the Maven build lifecycle. Common values for the "scope" attribute include:
+compile: This is the default scope. Dependencies with this scope are available in all classpaths of a project.
+provided: These dependencies are needed for compilation but are expected to be provided by the runtime environment.
+runtime: Dependencies with this scope are not required for compilation but are needed for execution.
+test: Dependencies used for testing the application. They are not included in the runtime classpath.
+system: This scope is generally not recommended. It is similar to "provided" but allows you to specify the path to the JAR file on the local file system.
+
+Type: The "type" attribute specifies the packaging type of the artifact. Common values for the "type" attribute include:
+jar: This is the default type for Java projects. It represents a JAR file.
+war: Used for web application projects. It represents a WAR file.
+pom: This type is used for specifying a project object model (POM) file, which is a way to aggregate projects.
+-->
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.dependencies.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <scope>runtime</scope>
+        <version>${postgresql.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+        <version>${spring.boot.dependencies.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <version>${spring.boot.dependencies.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-ui</artifactId>
+        <version>1.6.15</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+<!--
+When you use the "repackage" goal of the spring-boot-maven-plugin to create an executable JAR file, several pieces of metadata are included in the resulting JAR file. Some of the key metadata that gets included are:
+MANIFEST.MF: The plugin adds or modifies the MANIFEST.MF file within the JAR. This file contains metadata about the JAR file, including the main class to be executed when the JAR is run using "java -jar".
+Embedded Container Configuration: If your Spring Boot application uses an embedded servlet container (such as Tomcat or Jetty), the necessary configuration for the embedded container is included in the JAR file.
+Dependencies: The plugin includes all the necessary dependencies of your application within the JAR file, typically in a "lib" directory. This ensures that all required libraries are available when the JAR is executed.
+Spring Boot Properties: If you have specified any Spring Boot properties in your application's configuration, these properties are included in the JAR file.
+-->
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring.boot.maven.plugin.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>repackage</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

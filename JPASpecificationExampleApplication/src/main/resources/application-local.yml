@@ -1,0 +1,27 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: database-operations-server
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  datasource:
+    username: 'mayur'
+    url: jdbc:postgresql://localhost:5432/cricket
+    password: 'mayur123'
+springdoc:
+  swagger-ui:
+    try-it-out-enabled: true
+    operations-sorter: method
+    tags-sorter: alpha
+    filter: true
+#“local” ,“dev”, “prod”, “test”, “qa”
+local:
+  openapi:
+    dev-url: http://localhost:8090/JPASpecificationExample
