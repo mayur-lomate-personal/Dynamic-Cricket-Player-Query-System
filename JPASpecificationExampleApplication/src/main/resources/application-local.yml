@@ -24,4 +24,4 @@ springdoc:
 #“local” ,“dev”, “prod”, “test”, “qa”
 local:
   openapi:
-    dev-url: http://localhost:8090/JPASpecificationExample
+    dev-url: http://localhost:8091/JPASpecificationExample

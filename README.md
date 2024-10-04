@@ -32,4 +32,6 @@ The Tomcat architecture for reference is as follows.
   POST http://localhost:8090/JPASpecificationExample/players :- Creates a player according to the given information
 ```
 
-You can also refer to the Swagger documentation.
+You can easily access the Swagger UI for detailed API documentation and testing by visiting the following link: http://localhost:8090/JPASpecificationExample/swagger-ui/index.html
+
+Please note that the context path, "JPASpecificationExample", has been configured in the Tomcat server running locally. This is an essential part of the URL that ensures proper routing to the API documentation interface. Make sure your local setup reflects this configuration to seamlessly access and interact with the API endpoints.
