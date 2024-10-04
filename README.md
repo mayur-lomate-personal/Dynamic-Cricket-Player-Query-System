@@ -1,6 +1,6 @@
-# Example of Dynamic Querying Using JPA Specification
+# Dynamic Cricket Player Query System
 
-This is a proof of concept (POC) demonstrating the use of JPA Specification for dynamic querying in response to a given read REST request.
+The Dynamic Cricket Player Query System is designed to facilitate flexible and efficient querying of cricket player data. This project utilizes Spring Boot and JPA Specification to enable dynamic queries, allowing users to construct complex search criteria at runtime. By leveraging the power of JPA Specification, the system provides a type-safe and efficient way to interact with the database, ensuring optimal performance while retrieving cricket player information. This project aims to enhance data accessibility and user experience through customizable querying capabilities.
 
 ## Installation
 
